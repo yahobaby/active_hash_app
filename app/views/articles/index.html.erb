@@ -1,0 +1,23 @@
+<h1>記事一覧</h1>
+<%= link_to "投稿する", new_article_path, class:"post" %>
+
+<!--eachメソッドを使い、すべての記事のジャンル・タイトル・投稿内容の一覧を表示-->
+<% @articles.each do |article| %>
+<%# コントローラーですべての記事の情報を取得し、@articlesに代入 %>
+<%# eachメソッドを使い、articleという名前で記事を単一レコードとして取り出す。 %>
+<%# 今回はArticleモデルとActiveHashを用いたGenreモデルに、アソシエーションが組まれており、 アソシエーションが組まれている場合、単一レコード情報.ActiveHashを用いたモデル名.カラム名と記述することで、情報を取得%>
+  <div class="article">
+    <div class="article-genre">
+      <%= article.genre.name %>
+      <%# ジャンル名を表示する場合は、article.genre.nameと記述 %>
+    </div>
+    <div class="article-title">
+      <%= article.title %>
+    </div>
+    <div class="article-text">
+      <%= article.text %>
+    </div>
+  </div>
+<!--///eachメソッドを使い、すべての記事のジャンル・タイトル・投稿内容の一覧を表示-->
+
+<% end %>
